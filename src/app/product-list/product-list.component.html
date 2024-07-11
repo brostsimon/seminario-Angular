@@ -1,0 +1,38 @@
+<table class="table text-center">
+    <thead>
+        <tr>
+            <th>imagen</th>
+            <th>nombre</th>
+            <th>marca</th>
+            <th>precio</th>
+            <th>stock</th>
+            <th>cantidad</th>
+            <th>compra</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (product of products; track product.nombre){
+        <tr [ngClass]="{'oferta':product.oferta}">
+            <td><img width="90" class="img-thumbnail" 
+                     [src]="product.image" [alt]="product.nombre"></td>
+            <td>{{product.nombre | uppercase}}</td>
+            <td>{{product.marca}}</td>
+            <td>{{product.precio | currency}}</td>
+            @if (product.stock>0){
+            <td>{{product.stock}}</td>
+            } @else {
+            <td>
+                <span class="badge text-bg-warning"> agotado!!</span>
+            </td>
+            }
+            <td>
+                    @if(product.stock){
+                    <app-input-integer [(cantidad)]="product.cantidad" [max]="product.stock"  (maxReached)="maxReached($event)"></app-input-integer>
+                 cant: {{product.cantidad}}
+                }
+            </td> 
+            <td><button class="btn btn-primary btn-sm" (click)="agregarAlCarro(product)">comprar</button></td>
+        </tr> 
+    }
+    </tbody>
+</table>

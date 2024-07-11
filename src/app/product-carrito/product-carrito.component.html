@@ -1,0 +1,8 @@
+<h3>carrito system</h3>
+<ul>
+    @for(product of productList; track product.nombre){
+        <li>
+            {{product.nombre}}: {{product.cantidad}}
+        </li>
+    }
+</ul>
