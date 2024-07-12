@@ -9,6 +9,7 @@ import { AllsurfAboutComponent } from './allsurf-about/allsurf-about.component';
 import { AllsurfProductosComponent } from './allsurf-productos/allsurf-productos.component';
 import { ProductCarritoComponent } from './product-carrito/product-carrito.component';
 import { InputIntegerComponent } from './input-integer/input-integer.component'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import { InputIntegerComponent } from './input-integer/input-integer.component'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import {Product} from './Product';
 import { CarroCompraService } from '../carro-compra.service';
+import { ProductDataService } from '../product-data.service';
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -8,36 +9,18 @@ import { CarroCompraService } from '../carro-compra.service';
 })
 export class ProductListComponent  {
 
-  products: Product[] =[{
-    "nombre":"tabla",
-    "marca":"rip curl",
-    "precio":2000,
-    "stock":4,
-    "image":"assets/img/tabla_ripCurl.jpeg",
-    "oferta":false,
-    "cantidad":0,
-  },{
-    "nombre":"pita",
-    "marca":"reef",
-    "precio":480,
-    "stock":2,
-    "image":"assets/img/tabla_ripCurl.jpeg",
-    "oferta":true,
-    "cantidad":0,
-  },{
-    "nombre":"parafina",
-    "marca":"freelife",
-    "precio":20,
-    "stock":0,
-    "image":"assets/img/tabla_ripCurl.jpeg",
-    "oferta":false,
-    "cantidad":0,
-  },
- ];
+  products: Product[] =[];
 
- constructor(private carro: CarroCompraService){
+ constructor(private carro: CarroCompraService,
+    private productDataService: ProductDataService
+ ){}
 
+ ngOnInit(): void {
+  this.productDataService.getAll()
+  .subscribe(products => this.products=products);
+  
  }
+
  agregarAlCarro(product: Product):void{
   this.carro.agregarAlCarro(product);
   product.stock-=product.cantidad;
