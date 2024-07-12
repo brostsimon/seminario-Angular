@@ -8,8 +8,17 @@ import { Product } from '../product-list/Product';
   styleUrl: './product-carrito.component.scss'
 })
 export class ProductCarritoComponent {
+
+
   productList: Product[]=[];
   constructor(private carro: CarroCompraService){
     carro.productList.subscribe(pl=>this.productList=pl)
   }
+  
+  eliminarDelCarro(pr: Product) {
+
+    this.carro.eliminarDelCarro(pr);
+  }
+ 
+
 }

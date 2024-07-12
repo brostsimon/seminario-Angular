@@ -26,7 +26,7 @@ export class ProductListComponent  {
   product.stock-=product.cantidad;
   product.cantidad=0;
  }
-
+ 
  maxReached(m: string){
   alert(m);
  }

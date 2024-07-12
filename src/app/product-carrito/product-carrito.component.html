@@ -1,8 +1,10 @@
-<h3>carrito system</h3>
-<ul>
-    @for(product of productList; track product.nombre){
-        <li>
-            {{product.nombre}}: {{product.cantidad}}
+<div class="container text-center">
+  <h4>carrito system</h4>
+  <ul class="list-group">
+      @for(product of productList; track product.nombre){
+        <li class="list-group-item">
+            {{product.nombre}}: {{product.cantidad}} <button (click)="eliminarDelCarro(product)"   class="btn btn-danger btn-sm">eliminar</button>
         </li>
-    }
-</ul>
+      }
+  </ul>
+</div>

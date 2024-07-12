@@ -14,7 +14,7 @@ export class ProductDataService {
 
   public getAll():Observable<Product[]> {
    return this.http.get<Product[]>(URL)
-          .pipe(tap((productos : Product[])=> productos.forEach(prod=>prod.cantidad=0)));
+          .pipe(tap((productos : Product[])=> productos.forEach(prod=>prod.cantidad=1)));
   }
 
 }

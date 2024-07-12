@@ -19,7 +19,7 @@
             <td>{{product.marca}}</td>
             <td>{{product.precio | currency}}</td>
             @if (product.stock>0){
-            <td>{{product.stock}}</td>
+            <td><span class="badge text-bg-success">disponible</span></td>
             } @else {
             <td>
                 <span class="badge text-bg-warning"> agotado!!</span>
@@ -28,10 +28,9 @@
             <td>
                     @if(product.stock){
                     <app-input-integer [(cantidad)]="product.cantidad" [max]="product.stock"  (maxReached)="maxReached($event)"></app-input-integer>
-                 cant: {{product.cantidad}}
                 }
             </td>  
-            <td><button class="btn btn-primary btn-sm" (click)="agregarAlCarro(product)">comprar</button></td>
+            <td><button class="btn btn-primary btn-sm" (click)="agregarAlCarro(product)">agregar</button></td>
         </tr> 
     }
     </tbody>

@@ -12,13 +12,20 @@ export class CarroCompraService {
 
   agregarAlCarro(product:Product){
 
-    let item : Product | undefined=this._productList.find((v1)=>v1.nombre == product.nombre)
+    let item : Product | undefined=this._productList.find((v1)=>v1.nombre == product.nombre);
     if(!item){
     this._productList.push({... product});
   } else{
     item.cantidad+=product.cantidad;
   }
     console.log(this._productList.length);
+    this.productList.next(this._productList);
+  }
+  
+  eliminarDelCarro(product: Product) {
+  
+    product.stock+=product.cantidad;
+    this._productList = this._productList.filter((v1) => v1.nombre !== product.nombre);
     this.productList.next(this._productList);
   }
 }
